@@ -1,39 +1,64 @@
 module Main where
 
 import Functions
-import Lists
+import ListFunctions
 import ListOperations
 
 import Test.Hspec
 
 main = hspec $ do
-  describe "Funksjoner.myName" $ do
+
+  
+  describe "Functions.myName" $ do
     it "Skal ha et navn" $ do
       myName `shouldSatisfy` (> "")
 
-  describe "Funksjoner.doubleMe" $ do
+  describe "Functions.doubleMe" $ do
     it "Skal doble et tall" $ do
       doubleMe 1 `shouldBe` 2
 
-  describe "Funksjoner.doubleUs" $ do
+  describe "Functions.doubleUs" $ do
     it "Skal doble to tall" $ do
       doubleUs 1 2 `shouldBe` 6
 
-  describe "Lists.positive" $ do
+
+
+
+  describe "ListFunctions.positive" $ do
     it "Kan håndtere tomme lister" $ do
       positive [] `shouldBe` []
     it "Skal kun beholde positive tall" $ do
       positive [1,-1,0,3] `shouldBe` [1,3]
 
-  describe "Lists.flatten" $ do
+  describe "ListFunctions.flatten" $ do
     it "Kan flate ut nestede lister" $ do
       flatten [[1,2],[3],[]] `shouldBe` [1,2,3]
 
-  describe "Lists.filterNot" $ do
+  describe "ListFunctions.filterNot" $ do
     it "Kan håndtere tomme lister" $ do
       filterNot (>0) [] `shouldBe` []
     it "Beholder kun ønskede elementer" $ do
       filterNot (>0) [1,-1,2,-2] `shouldBe` [-1,-2]
+
+  describe "ListFunctions.elem'" $ do
+    it "Håndterer tomme lister" $ do
+      (elem' 1 []) `shouldBe` False
+    it "Listen inneholder elementet" $ do
+      (elem' 1 [1..]) `shouldBe` True
+    it "Listen inneholder ikke elementet" $ do
+      (elem' 1 [2..10]) `shouldBe` False
+
+  describe "ListFunctions.takeWhile'" $ do
+    it "Håndterer tomme lister" $ do
+      (takeWhile' (>0) []) `shouldBe` []
+    it "Returnerer elementer så lenge predikatet er sant" $ do
+      (takeWhile' (<5) [1..10]) `shouldBe` [1..4]
+
+  describe "ListFunctions.index" $ do
+    it "Indekserer elementene i lister" $ do
+      index ['a','b','c'] `shouldBe` [(1,'a'),(2,'b'),(3,'c')]
+
+
 
   describe "ListOperations.filter'" $ do
     it "Kan håndtere tomme lister" $ do
@@ -58,7 +83,7 @@ main = hspec $ do
       
   describe "ListOperations.sum'" $ do
     it "Håndterer tomme lister " $ do
-      sum'  [] `shouldBe` 0
+      sum' [] `shouldBe` 0
     it "Summerer alle elementene i listen" $ do
       sum' [1..3] `shouldBe` 6
 
@@ -88,23 +113,11 @@ main = hspec $ do
     it "Kombinerer elementene i listene" $ do
       (zip' [1..2] [1..2]) `shouldBe` [(1,1),(2,2)]
 
-  describe "ListOperations.index" $ do
-    it "Indekserer elementene i lister" $ do
-      index ['a','b','c'] `shouldBe` [(1,'a'),(2,'b'),(3,'c')]
-
   describe "ListOperations.fold" $ do
     it "Håndterer tomme lister" $ do
       (fold (+) 0 []) `shouldBe` 0
     it "Legger sammen elementene i listen" $ do
       (fold (+) 0 [1..3]) `shouldBe` 6
-
-  describe "ListOperations.elem'" $ do
-    it "Håndterer tomme lister" $ do
-      (elem' 1 []) `shouldBe` False
-    it "Listen inneholder elementet" $ do
-      (elem' 1 [1..]) `shouldBe` True
-    it "Listen inneholder ikke elementet" $ do
-      (elem' 1 [2..10]) `shouldBe` False
 
   describe "ListOperations.reverse'" $ do
     it "Reverserer elementene i listen" $ do
@@ -113,9 +126,3 @@ main = hspec $ do
   describe "ListOperations.maximum'" $ do
     it "Returnerer det største elementet i listen" $ do
       (maximum' [1,10,5,0]) `shouldBe` 10
-
-  describe "ListOperations.takeWhile'" $ do
-    it "Håndterer tomme lister" $ do
-      (takeWhile' (>0) []) `shouldBe` []
-    it "Returnerer elementer så lenge predikatet er sant" $ do
-      (takeWhile' (<5) [1..10]) `shouldBe` [1..4]
