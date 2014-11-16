@@ -6,25 +6,23 @@ module ListOperations where
 -- Eks: filter' (>0) [1,2,-1,-2] = [1,2]
 
 filter' :: (a -> Bool) -> [a] -> [a]
-filter' _ [] = []
-filter' f (x:xs)
-    | f x = x:(filter' f xs)
-    | otherwise = filter' f xs
+filter' pred xs = undefined
 
 
 -- Implementer map' som tar inn en funksjon og en liste og returnerer
 -- en ny liste der alle elementene er blitt
 -- transformert med funksjonen
 -- Eks: map' (+1) [1,2,3] = [2,3,4]
+
 map' :: (a -> b) -> [a] -> [b]
-map' _ [] = []
-map' f (x:xs) = (f x):(map' f xs)
+map' f xs = undefined
 
 
 -- Implementer head' som returnerer det første elementet i listen
 -- Eks: head' [1,2,3] = 1
+
 head' :: [a] -> a
-head' (x:xs) = x
+head' xs = undefined
 
 
 -- Implementer tail' som returnerer alle elementene bortsett fra det
@@ -32,15 +30,14 @@ head' (x:xs) = x
 -- Eks: tail' [1,2,3] = [2,3]
 
 tail' :: [a] -> [a]
-tail' (x:xs) = xs
+tail' xs = undefined
 
 
 -- Implementer sum' som returnerer summen av alle elementene i listen
 -- Eks: sum' [1,2,3] = 6
 
 sum' :: Num a => [a] -> a
-sum' [] = 0
-sum' (x:xs) = x + sum' xs
+sum' xs = undefined
 
 
 -- Implementer repeat' som tar inn et element og returnerer en
@@ -48,7 +45,7 @@ sum' (x:xs) = x + sum' xs
 -- Eks: repeat' 1 = [1,1..]
 
 repeat' :: a -> [a]
-repeat' x = x:(repeat' x)
+repeat' x = undefined
 
 
 -- Implementer take' som returnerer de n første elementene i listen.
@@ -57,9 +54,7 @@ repeat' x = x:(repeat' x)
 -- Eks: take' 5 [1,2,3] = [1,2,3]
 
 take' :: Int -> [a] -> [a]
-take' 0 _ = []
-take' _ [] = []
-take' n (x:xs) = x:(take' (n-1) xs)
+take' n xs = undefined
 
 
 -- Implementer zipWith' som tar inn en funksjon og to lister. Listene
@@ -69,9 +64,7 @@ take' n (x:xs) = x:(take' (n-1) xs)
 -- Eks: zipWith' (+) [1,2,3] [1,2,3,4,5] = [2,4,6]
 
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ [] _ = []
-zipWith' _ _ [] = []
-zipWith' f (x:xs) (y:ys) = (f x y) : (zipWith' f xs ys)
+zipWith' f xs ys = undefined
 
 
 -- Implementer zip' som slår sammen to lister ved a lage et par av
@@ -80,7 +73,7 @@ zipWith' f (x:xs) (y:ys) = (f x y) : (zipWith' f xs ys)
 -- Hint: Prøv å bruke zipWith' som du implementerte forrige oppgave
 
 zip' :: [a] -> [b] -> [(a,b)]
-zip' xs ys = zipWith' (\ x y -> (x,y)) xs ys
+zip' xs ys = undefined
 
 
 -- Implementer en vanlig left fold som tar inn en funksjon, en
@@ -88,8 +81,7 @@ zip' xs ys = zipWith' (\ x y -> (x,y)) xs ys
 -- Eks: fold (+) 0 [1,2,3] = 6
 
 fold :: (b -> a -> b) -> b -> [a] -> b
-fold _ acc [] = acc
-fold f acc (x:xs) = fold f (f acc x) xs
+fold f acc xs = undefined
 
 
 -- Ved å bruke fold som du implementerte forrige oppgave, lag reverse'
@@ -97,7 +89,7 @@ fold f acc (x:xs) = fold f (f acc x) xs
 -- Eks: reverse' [1,2,3] = [3,2,1]
 
 reverse' :: [a] -> [a]
-reverse' xs = fold (\acc x -> x:acc) [] xs
+reverse' xs = undefined
 
 
 -- Ved å bruke fold, lag maximum' som returnerer det største elementet
@@ -105,4 +97,4 @@ reverse' xs = fold (\acc x -> x:acc) [] xs
 -- Eks: maximum' [1,2,3] = 3
 
 maximum' :: Ord a => [a] -> a
-maximum' xs = fold (\acc x -> if (x > acc) then x else acc) (head' xs) xs
+maximum' xs = undefined

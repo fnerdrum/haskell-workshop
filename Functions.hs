@@ -1,10 +1,10 @@
 module Functions where
 
 -- Lag en funksjon som returnerer navnet ditt
-myName = "Frithjof"
+myName = undefined
 
 -- Lag en funksjon som dobler inputen
-doubleMe x = x + x
+doubleMe x = undefined
 
 -- Lag en funksjon som dobler to tall og returnerer summen.
-doubleUs x y = (doubleMe x) + (doubleMe y)
+doubleUs x y = undefined
