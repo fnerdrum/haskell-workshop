@@ -1,6 +1,4 @@
-module Exercices where
-
-true = True
+module ListOperations where
 
 filter' :: (a -> Bool) -> [a] -> [a]
 filter' _ [] = []
@@ -8,15 +6,6 @@ filter' f (x:xs)
     | f x = x:(filter' f xs)
     | otherwise = filter' f xs
 
-positive :: Num a => Ord a => [a] -> [a]
-positive = filter (>0)
-
-not' :: Bool -> Bool
-not' True = False
-not' False = True
-
-filterNot :: (a -> Bool) -> [a] -> [a]
-filterNot cond = filter' (not . cond)
 
 map' :: (a -> b) -> [a] -> [b]
 map' _ [] = []
@@ -49,14 +38,11 @@ zip' :: [a] -> [b] -> [(a,b)]
 zip' xs ys = zipWith' (\ x y -> (x,y)) xs ys
 
 index :: [a] -> [(Int,a)]
-index xs = zip [1,2..] xs
+index xs = zip [1..] xs
 
 fold :: (b -> a -> b) -> b -> [a] -> b
 fold _ acc [] = acc
 fold f acc (x:xs) = fold f (f acc x) xs
-
-sum'' :: Num a => [a] -> a
-sum'' xs = fold (+) 0 xs
 
 elem' :: Eq a => a -> [a] -> Bool
 elem' _ [] = False
