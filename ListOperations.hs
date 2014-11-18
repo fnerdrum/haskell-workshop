@@ -105,4 +105,4 @@ reverse' xs = fold (\acc x -> x:acc) [] xs
 -- Eks: maximum' [1,2,3] = 3
 
 maximum' :: Ord a => [a] -> a
-maximum' xs = fold (\acc x -> if (x > acc) then x else acc) (head' xs) xs
+maximum' xs = fold max (head' xs) xs
